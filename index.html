@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMARNET - Ana Sayfa</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>SMARNET ERP Sistemi</h1>
+        <nav>
+            <ul>
+                <li><a href="sales.html">Satış İşlemleri</a></li>
+                <li><a href="purchasing.html">Alış İşlemleri</a></li>
+                <li><a href="shipment.html">Sevkiyat İşlemleri</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Hoş Geldiniz</h2>
+            <p>SMARNET ERP sistemi, işletmenizin satış, satın alma ve sevkiyat süreçlerini yönetmenizi sağlar.</p>
+        </section>
+
+        <section>
+            <h2>Dosya Yükleme Alanı</h2>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" id="fileInput" accept="image/*, video/*">
+                <button type="button" onclick="uploadFile()">Yükle</button>
+            </form>
+            <div id="preview"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SMARNET ERP. Tüm hakları saklıdır.</p>
+    </footer>
+
+</body>
+</html>
