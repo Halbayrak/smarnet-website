@@ -14,10 +14,10 @@ body {
 /* Header */
 .header {
     background-color: #007bff;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     color: white;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
 }
 
@@ -26,22 +26,26 @@ body {
     display: flex;
     justify-content: center;
     background-color: #0056b3;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 .navbar a {
     text-decoration: none;
-    color: white;
     font-size: 18px;
-    padding: 12px 20px;
+    padding: 12px 25px;
     margin: 0 10px;
-    background-color: #004494;
+    background-color: #ffcc00; /* Bright yellow background */
+    color: #333; /* Dark text for visibility */
+    font-weight: bold;
     border-radius: 6px;
     transition: 0.3s;
+    border: 2px solid #ffcc00;
 }
 
 .navbar a:hover {
-    background-color: #002f6c;
+    background-color: #ff9900; /* Slightly darker yellow */
+    border: 2px solid #ff9900;
+    color: white;
 }
 
 /* Main Container */
