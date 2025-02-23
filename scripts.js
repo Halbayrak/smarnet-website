@@ -1,34 +1,39 @@
-// Wait for DOM to load
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("JavaScript Loaded ✅");
+    // Select all file input fields
+    const fileInputs = document.querySelectorAll(".file-upload");
 
-    // Attach event listeners to all upload buttons
-    document.querySelectorAll(".upload-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            let inputField = this.previousElementSibling;
-            inputField.click();
-        });
-    });
-
-    // Handle file selection
-    document.querySelectorAll(".upload-input").forEach(input => {
+    fileInputs.forEach(input => {
         input.addEventListener("change", function (event) {
-            let file = event.target.files[0];
-            let previewContainer = this.nextElementSibling;
+            const file = event.target.files[0];
+            if (!file) return;
 
-            if (file) {
-                let reader = new FileReader();
-                reader.onload = function (e) {
-                    if (file.type.startsWith("image/")) {
-                        previewContainer.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" class="preview-img">`;
-                    } else if (file.type.startsWith("video/")) {
-                        previewContainer.innerHTML = `<video controls class="preview-video"><source src="${e.target.result}" type="${file.type}">Your browser does not support videos.</video>`;
-                    } else {
-                        previewContainer.innerHTML = `<p class="file-name">Uploaded: ${file.name}</p>`;
-                    }
-                };
-                reader.readAsDataURL(file);
+            const previewContainer = event.target.parentElement.querySelector(".preview");
+
+            // Clear previous preview
+            previewContainer.innerHTML = "";
+
+            // Create an element to display the file
+            const fileType = file.type.split("/")[0]; // Get file type (image/video)
+            let mediaElement;
+
+            if (fileType === "image") {
+                mediaElement = document.createElement("img");
+                mediaElement.classList.add("uploaded-image");
+            } else if (fileType === "video") {
+                mediaElement = document.createElement("video");
+                mediaElement.setAttribute("controls", "true");
+                mediaElement.classList.add("uploaded-video");
+            } else {
+                alert("Only image and video files are supported.");
+                return;
             }
+
+            // Create URL and set as source
+            const fileURL = URL.createObjectURL(file);
+            mediaElement.src = fileURL;
+
+            // Append media to the preview container
+            previewContainer.appendChild(mediaElement);
         });
     });
 });
